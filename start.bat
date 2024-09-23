@@ -1,1 +1,0 @@
-truffle migrate --reset && live-server

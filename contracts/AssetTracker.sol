@@ -23,9 +23,11 @@ contract AssetTracker {
     }
     
     
-    function getAsset(uint _id) view public returns(string memory, string memory, string memory, string memory, string memory, string memory) {
-        return (AssetStore[_id].batchNo, AssetStore[_id].name, AssetStore[_id].manufacturer, AssetStore[_id].status[AssetStore[_id].statusCount].owner, AssetStore[_id].status[AssetStore[_id].statusCount].status, AssetStore[_id].description);
-    }
+   function getAsset(uint _id) view public returns(string memory, string memory, string memory, string memory, string memory, string memory) {
+    require(_id <= assetCount && _id > 0, "Asset ID does not exist");
+    return (AssetStore[_id].batchNo, AssetStore[_id].name, AssetStore[_id].manufacturer, AssetStore[_id].status[AssetStore[_id].statusCount].owner, AssetStore[_id].status[AssetStore[_id].statusCount].status, AssetStore[_id].description);
+}
+
     
     function transferAsset(uint _id, string memory _newOwner, string memory _status) public returns(string memory) {
         AssetStore[_id].statusCount++;

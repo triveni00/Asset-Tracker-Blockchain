@@ -31,3 +31,5 @@ const AssetTrackerContract = new web3.eth.Contract(
   contractAddress,
   { from: fromAddress }
 );
+
+
